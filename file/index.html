@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Haven - Food Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg-main: #0f172a;
+        --bg-secondary: #1e293b;
+        --surface: rgba(255, 255, 255, 0.05);
+        --surface-soft: rgba(255, 255, 255, 0.04);
+        --line: rgba(255, 255, 255, 0.08);
+        --text-main: #e5e7eb;
+        --text-soft: #cbd5e1;
+        --text-muted: #94a3b8;
+        --accent: #f59e0b;
+        --accent-soft: #f472b6;
+        --success: #22c55e;
+        --shadow-lg: 0 22px 48px rgba(0, 0, 0, 0.24);
+        --shadow-md: 0 14px 28px rgba(0, 0, 0, 0.18);
+        --radius-lg: 22px;
+        --radius-md: 18px;
+        --radius-sm: 14px;
+        --container: 1200px;
+        --font-main: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: var(--font-main);
+        color: var(--text-main);
+        line-height: 1.6;
+        background:
+            radial-gradient(circle at top, rgba(245, 158, 11, 0.14), transparent 24%),
+            linear-gradient(135deg, var(--bg-main), var(--bg-secondary));
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    .container {
+        width: min(92%, var(--container));
+        margin: 0 auto;
+    }
+
+    /* =========================
+   HERO
+========================= */
+    .hero {
+        padding: 36px 0 24px;
+    }
+
+    .hero__content {
+        text-align: center;
+    }
+
+    .logo {
+        width: 108px;
+        height: 108px;
+        margin: 0 auto 14px;
+        filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.28));
+        animation: float-logo 3.5s ease-in-out infinite;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.3rem, 6vw, 3.7rem);
+        color: var(--accent);
+        letter-spacing: 0.03em;
+        text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .tagline {
+        margin-top: 6px;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        color: var(--text-soft);
+    }
+
+    /* =========================
+   NAVIGATION
+========================= */
+    .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(15, 23, 42, 0.82);
+        backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .nav-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 72px;
+    }
+
+    .nav-brand {
+        position: absolute;
+        left: 0;
+        font-size: 1.08rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: var(--accent);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .site-nav.brand-visible .nav-brand {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 auto;
+        transition: margin 0.28s ease;
+    }
+
+    .site-nav.brand-visible .nav-links {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        color: #fff;
+        transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+        background: var(--accent);
+        color: #111827;
+        transform: translateY(-1px);
+    }
+
+    .nav-toggle {
+        display: none;
+        margin-left: auto;
+        width: 48px;
+        height: 48px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        height: 2px;
+        margin: 5px 0;
+        border-radius: 999px;
+        background: #fff;
+        transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* =========================
+   PAGE CONTENT
+========================= */
+    .page-content {
+        padding: 30px 0 44px;
+    }
+
+    section {
+        margin-bottom: 44px;
+    }
+
+    .section-header {
+        margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+        text-align: center;
+        color: var(--accent-soft);
+        font-size: clamp(1.7rem, 4vw, 2.1rem);
+    }
+
+    .section-header--left,
+    .section-header--left h2 {
+        text-align: left;
+    }
+
+    .section-intro {
+        margin-top: 8px;
+        color: var(--text-soft);
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .menu-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--surface);
+        overflow: hidden;
+    }
+
+    .menu-table th {
+        padding: 16px 14px;
+        background: rgba(31, 41, 55, 0.96);
+        color: var(--accent);
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+        text-align: center;
+    }
+
+    .menu-table td {
+        padding: 16px 14px;
+        text-align: center;
+        vertical-align: top;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .menu-table tbody tr:hover {
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .menu-table img {
+        width: 126px;
+        height: 126px;
+        margin: 0 auto;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .menu-subtitle {
+        display: block;
+        margin-top: 4px;
+        color: var(--text-soft);
+        font-size: 0.95rem;
+    }
+
+    .ingredients-list {
+        margin: 0;
+        padding-left: 20px;
+        list-style: disc;
+        text-align: left;
+        color: var(--text-soft);
+        font-size: 0.93rem;
+    }
+
+    .ingredients-list li+li {
+        margin-top: 5px;
+    }
+
+    .price {
+        font-weight: 700;
+        color: var(--success);
+        white-space: nowrap;
+    }
+
+    .price span {
+        display: block;
+    }
+
+    .price-separator {
+        margin: 2px 0;
+        color: var(--text-soft);
+        font-size: 0.88rem;
+        font-weight: 600;
+        text-transform: lowercase;
+    }
+
+    .info-panel {
+        width: 100%;
+        padding: 28px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .about-text,
+    .contact-details {
+        text-align: left;
+    }
+
+    .about-text h3,
+    .contact-details h3 {
+        margin-bottom: 12px;
+        color: #f8fafc;
+        font-size: 1.2rem;
+    }
+
+    .about-text p,
+    .contact-details p {
+        color: var(--text-soft);
+    }
+
+    .about-text p+p {
+        margin-top: 12px;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 12px 24px;
+        margin-top: 8px;
+    }
+
+    .contact-grid p {
+        padding: 12px 14px;
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+    }
+
+    /* =========================
+   FOOTER
+========================= */
+    .site-footer {
+        position: relative;
+        margin-top: 12px;
+        padding: 24px 0 30px;
+        text-align: center;
+        color: var(--text-muted);
+        background: #111827;
+        border-top: 1px solid var(--line);
+    }
+
+    .footer-content {
+        display: grid;
+        justify-items: center;
+        gap: 12px;
+    }
+
+    .footer-actions {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .footer-source {
+        position: relative;
+    }
+
+    .source-toggle,
+    .footer-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font: inherit;
+        font-weight: 700;
+    }
+
+    .source-toggle {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--accent);
+        cursor: pointer;
+        transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .source-toggle:hover,
+    .source-toggle:focus-visible,
+    .source-toggle[aria-expanded="true"] {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(245, 158, 11, 0.4);
+        transform: translateY(-1px);
+    }
+
+    .footer-link {
+        color: var(--accent);
+        border: 1px solid transparent;
+        transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible {
+        color: #ffd27a;
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .footer-divider {
+        color: var(--text-muted);
+    }
+
+    .source-panel[hidden] {
+        display: none !important;
+    }
+
+    .source-panel {
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 12px);
+        transform: translateX(-50%);
+        min-width: 220px;
+        display: grid;
+        gap: 8px;
+        padding: 10px;
+        background: rgba(15, 23, 42, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: var(--shadow-md);
+        z-index: 5;
+        animation: panel-up 0.22s ease;
+    }
+
+    .source-panel::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        width: 12px;
+        height: 12px;
+        background: rgba(15, 23, 42, 0.98);
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    .source-panel a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 12px;
+        color: var(--text-main);
+        background: rgba(255, 255, 255, 0.04);
+        transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .source-panel a:hover,
+    .source-panel a:focus-visible {
+        background: rgba(245, 158, 11, 0.16);
+        color: #fff;
+    }
+
+    /* =========================
+   ANIMATIONS
+========================= */
+    @keyframes float-logo {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-4px);
+        }
+    }
+
+    @keyframes panel-up {
+        from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+
+    /* =========================
+   RESPONSIVE
+========================= */
+    @media (max-width: 900px) {
+
+        .menu-table th,
+        .menu-table td {
+            padding: 12px;
+            font-size: 0.95rem;
+        }
+
+        .menu-table img {
+            width: 96px;
+            height: 96px;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding-top: 26px;
+        }
+
+        .nav-wrap {
+            min-height: 68px;
+        }
+
+        .nav-toggle {
+            display: block;
+        }
+
+        .nav-brand {
+            position: static;
+        }
+
+        .nav-links {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 4%;
+            right: 4%;
+            display: grid;
+            gap: 8px;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+        }
+
+        .nav-links.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-links a {
+            width: 100%;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .site-nav:not(.brand-visible) .nav-links,
+        .site-nav.brand-visible .nav-links {
+            margin: 0;
+        }
+
+        .menu-table,
+        .menu-table thead,
+        .menu-table tbody,
+        .menu-table tr,
+        .menu-table th,
+        .menu-table td {
+            display: block;
+            width: 100%;
+        }
+
+        .menu-table thead {
+            display: none;
+        }
+
+        .table-wrap {
+            overflow: visible;
+            box-shadow: none;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        .menu-table {
+            background: transparent;
+        }
+
+        .menu-table tbody {
+            display: grid;
+            gap: 18px;
+        }
+
+        .menu-table tr {
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: var(--shadow-md);
+        }
+
+        .menu-table td {
+            padding: 8px 0;
+            border: 0;
+            text-align: left;
+        }
+
+        .menu-table td::before {
+            content: attr(data-label);
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .menu-table td[data-label="Image"]::before {
+            margin-bottom: 8px;
+        }
+
+        .menu-table img {
+            width: 100%;
+            max-width: 100%;
+            height: 220px;
+            border-radius: 16px;
+        }
+
+        .ingredients-list {
+            padding-left: 18px;
+        }
+
+        .info-panel {
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .menu-table img {
+            height: 190px;
+        }
+
+        .info-panel {
+            padding: 18px;
+            border-radius: var(--radius-sm);
+        }
+
+        .footer-actions {
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer-divider {
+            display: none;
+        }
+
+        .source-panel {
+            min-width: min(220px, 82vw);
+        }
+    }
+</style>
+
+<body>
+    <header class="hero" id="top">
+        <div class="container hero__content">
+            <svg class="logo" viewBox="0 0 64 64" role="img" aria-label="Gourmet Haven Logo">
+                <defs>
+                    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#f59e0b"></stop>
+                        <stop offset="100%" stop-color="#f472b6"></stop>
+                    </linearGradient>
+                </defs>
+                <circle cx="32" cy="32" r="28" fill="url(#grad)"></circle>
+                <path d="M16 38c6-8 20-8 26 0" fill="none" stroke="#0b1020" stroke-width="4" stroke-linecap="round">
+                </path>
+                <path d="M22 28h20" stroke="#0b1020" stroke-width="4" stroke-linecap="round"></path>
+            </svg>
+            <h1>Gourmet Haven</h1>
+            <p class="tagline">Where Every Bite Tells a Story</p>
+        </div>
+    </header>
+
+    <nav class="site-nav" aria-label="Main navigation">
+        <div class="container nav-wrap">
+            <a href="#top" class="nav-brand" aria-label="Back to top">Gourmet Haven</a>
+
+            <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="site-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="site-menu">
+                <li><a href="#appetizers">Appetizers</a></li>
+                <li><a href="#main-courses">Main Courses</a></li>
+                <li><a href="#desserts">Desserts</a></li>
+                <li><a href="#drinks">Drinks</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container page-content">
+        <section id="appetizers" aria-labelledby="appetizers-title">
+            <header class="section-header">
+                <h2 id="appetizers-title">Appetizers</h2>
+            </header>
+            <div class="table-wrap">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Dish Name</th>
+                            <th>Description</th>
+                            <th>Ingredients</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Image"><img src="image 1.png" alt="Tokwat baby"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dish Name"><strong>Tokwat baby</strong><span class="menu-subtitle">Filipino
+                                    Street Food</span></td>
+                            <td data-label="Description">Crispy bread topped with garlic butter and herbs</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Fried pork ears &amp; tofu</li>
+                                    <li>Soy sauce &amp; vinegar dip</li>
+                                    <li>Garlic, chili, black pepper</li>
+                                    <li>Calamansi or lemon juice</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P650.00</span><span
+                                    class="price-separator">to</span><span>P2,598.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 2.png" alt="Caesar Salad"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dish Name"><strong>Caesar Salad</strong><span class="menu-subtitle">Classic
+                                    Version</span></td>
+                            <td data-label="Description">Romaine lettuce, croutons, parmesan cheese with creamy Caesar
+                                dressing</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Romaine lettuce</li>
+                                    <li>Caesar dressing</li>
+                                    <li>Parmesan cheese</li>
+                                    <li>Anchovies (optional)</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P279.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 3.png" alt="Mozzarella Sticks"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548340748-6d2b7d7da280?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dish Name"><strong>Mozzarella Sticks</strong><span
+                                    class="menu-subtitle">Crispy &amp; Cheesy</span></td>
+                            <td data-label="Description">Fried cheese served with marinara sauce</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Fresh mozzarella cheese</li>
+                                    <li>Panko breadcrumbs</li>
+                                    <li>Marinara sauce</li>
+                                    <li>Italian seasoning</li>
+                                    <li>Eggs &amp; flour batter</li>
+                                    <li>Vegetable oil for frying</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P375.00</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="main-courses" aria-labelledby="main-courses-title">
+            <header class="section-header">
+                <h2 id="main-courses-title">Main Courses</h2>
+            </header>
+            <div class="table-wrap">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Dish Name</th>
+                            <th>Description</th>
+                            <th>Ingredients</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Image"><img src="image 4.png" alt="Grilled Ribeye Steak"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dish Name"><strong>Grilled Ribeye Steak</strong><span
+                                    class="menu-subtitle">12oz Premium Cut</span></td>
+                            <td data-label="Description">250g premium ribeye with roasted potatoes and seasonal
+                                vegetables</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>12oz ribeye steak</li>
+                                    <li>Garlic herb butter</li>
+                                    <li>Truffle mashed potatoes</li>
+                                    <li>Grilled asparagus</li>
+                                    <li>Red wine reduction</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P300.00</span><span
+                                    class="price-separator">to</span><span>P800.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 5.png" alt="Grilled Chicken Steak"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dish Name"><strong>Grilled Chicken Steak</strong><span
+                                    class="menu-subtitle">Juicy Breast Fillet</span></td>
+                            <td data-label="Description">Flattened, marinated, and grilled chicken breast or thigh,
+                                offering a healthy, high-protein, and succulent alternative to beef steak</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Chicken breast fillet</li>
+                                    <li>Lemon herb marinade</li>
+                                    <li>Roasted garlic potatoes</li>
+                                    <li>Steamed broccoli</li>
+                                    <li>Chimichurri sauce</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P85.00</span><span
+                                    class="price-separator">to</span><span>P400.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 6.png" alt="Grilled Salmon"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dish Name"><strong>Grilled Salmon</strong><span class="menu-subtitle">Lemon
+                                    Butter Glaze</span></td>
+                            <td data-label="Description">Fresh Atlantic salmon grilled to perfection, served with rice
+                                and vegetables</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Salmon fillet</li>
+                                    <li>Lemon butter sauce</li>
+                                    <li>Steamed rice</li>
+                                    <li>Sauteed vegetables</li>
+                                    <li>Herbs and seasoning</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P250.00</span><span
+                                    class="price-separator">to</span><span>P600.00</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="desserts" aria-labelledby="desserts-title">
+            <header class="section-header">
+                <h2 id="desserts-title">Desserts</h2>
+            </header>
+            <div class="table-wrap">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Dessert Name</th>
+                            <th>Description</th>
+                            <th>Ingredients</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Image"><img src="image 7.avif" alt="Chocolate Lava Cake"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dessert Name"><strong>Chocolate Lava Cake</strong><span
+                                    class="menu-subtitle">Molten Center</span></td>
+                            <td data-label="Description">Warm chocolate cake with a molten center, served with ice cream
+                            </td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Dark chocolate center</li>
+                                    <li>Vanilla ice cream</li>
+                                    <li>Fresh raspberries</li>
+                                    <li>Powdered sugar</li>
+                                    <li>Chocolate ganache</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P840.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 8.avif" alt="Tiramisu"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dessert Name"><strong>Tiramisu</strong><span class="menu-subtitle">Classic
+                                    Italian</span></td>
+                            <td data-label="Description">Classic Italian dessert with coffee-soaked ladyfingers and
+                                mascarpone</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Ladyfinger biscuits</li>
+                                    <li>Mascarpone cream</li>
+                                    <li>Espresso coffee</li>
+                                    <li>Cocoa powder</li>
+                                    <li>Rum extract</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P250.00</span><span
+                                    class="price-separator">to</span><span>P900.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 9.png" alt="Cheesecake"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Dessert Name"><strong>Cheesecake</strong><span class="menu-subtitle">Creamy
+                                    Classic</span></td>
+                            <td data-label="Description">Rich and creamy cheesecake with a buttery graham crust</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Cream cheese</li>
+                                    <li>Graham cracker crust</li>
+                                    <li>Sugar</li>
+                                    <li>Eggs</li>
+                                    <li>Vanilla extract</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P320.00</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="drinks" aria-labelledby="drinks-title">
+            <header class="section-header">
+                <h2 id="drinks-title">Drinks</h2>
+            </header>
+            <div class="table-wrap">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Drink Name</th>
+                            <th>Description</th>
+                            <th>Ingredients</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Image"><img src="image 12.avif" alt="Iced Tea"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Drink Name"><strong>Iced Tea</strong><span class="menu-subtitle">Refreshing
+                                    classic</span></td>
+                            <td data-label="Description">Refreshing iced tea with lemon</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Premium black tea</li>
+                                    <li>Fresh lemon slices</li>
+                                    <li>Simple syrup</li>
+                                    <li>Mint leaves</li>
+                                    <li>Ice cubes</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P115.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 11.png" alt="Hot Coffee"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Drink Name"><strong>Hot Coffee</strong><span class="menu-subtitle">Freshly
+                                    Brewed</span></td>
+                            <td data-label="Description">Freshly brewed hot coffee</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>100% Arabic beans</li>
+                                    <li>Freshly ground</li>
+                                    <li>Hot water (93Celsius)</li>
+                                    <li>Optional cream/sugar</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P50.00</span><span
+                                    class="price-separator">to</span><span>P200.00</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Image"><img src="image 10.png" alt="Lemonade"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
+                            </td>
+                            <td data-label="Drink Name"><strong>Lemonade</strong><span class="menu-subtitle">Citrus
+                                    Refreshment</span></td>
+                            <td data-label="Description">Freshly squeezed lemons with chilled water and sugar</td>
+                            <td data-label="Ingredients">
+                                <ul class="ingredients-list">
+                                    <li>Fresh lemon juice</li>
+                                    <li>Water</li>
+                                    <li>Sugar</li>
+                                    <li>Ice cubes</li>
+                                </ul>
+                            </td>
+                            <td data-label="Price" class="price"><span>P90.00</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="about" aria-labelledby="about-title">
+            <header class="section-header section-header--left">
+                <h2 id="about-title">About</h2>
+            </header>
+            <div class="info-panel about-text">
+                <h3>About Gourmet Haven</h3>
+                <p>&copy;Gourmet Haven is a celebration of global flavors crafted with seasonal ingredients. Our chefs
+                    focus on refined techniques, balanced plates, and warm hospitality. We source locally when possible
+                    and design menus that highlight the best of each season.</p>
+                <p>Reservations are welcome for dine-in, private events, and tasting experiences. We also offer takeout
+                    and limited delivery in select areas.</p>
+            </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-title">
+            <header class="section-header section-header--left">
+                <h2 id="contact-title">Contact &amp; Reservations</h2>
+                <p class="section-intro">Have a question or want to reserve a table? Send us a message below or use the
+                    contact details.</p>
+            </header>
+            <div class="info-panel contact-details">
+                <h3>Visit or Call</h3>
+                <div class="contact-grid">
+                    <p><strong>Address:</strong> 123 Culinary Lane, Flavor Town</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> hello@gourmethaven.example</p>
+                    <p><strong>Hours:</strong> Tue–Sun, 12:00–22:00</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+        <div class="container footer-content">
+            <p>© 2026 Gourmet Haven. All rights reserved.</p>
+
+            <div class="footer-actions">
+                <div class="footer-source">
+                    <button class="source-toggle" type="button" aria-expanded="false"
+                        aria-controls="source-panel">Source File</button>
+                    <div class="source-panel" id="source-panel" hidden>
+                        <a href="index_fixed.html" download="index.html">index.html</a>
+                        <a href="style_fixed.css" download="style.css">style.css</a>
+                        <a href="script_fixed.js" download="script.js">script.js</a>
+                    </div>
+                </div>
+
+                <span class="footer-divider" aria-hidden="true">|</span>
+
+                <a class="footer-link" href="index_fixed.html" download="index.html">HTML only</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =========================
+        // ELEMENTS
+        // =========================
+        const nav = document.querySelector('.site-nav');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const hero = document.querySelector('.hero');
+        const sourceToggle = document.querySelector('.source-toggle');
+        const sourcePanel = document.querySelector('.source-panel');
+
+        // =========================
+        // MOBILE NAVIGATION
+        // =========================
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navToggle.classList.toggle('active', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            navLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    navToggle.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        // =========================
+        // SHOW NAV BRAND AFTER HERO
+        // =========================
+        function updateNavState() {
+            if (!nav || !hero) return;
+
+            nav.classList.toggle('brand-visible', hero.getBoundingClientRect().bottom <= 0);
+        }
+
+        window.addEventListener('scroll', updateNavState, { passive: true });
+        window.addEventListener('load', updateNavState);
+
+        // =========================
+        // SOURCE FILE PANEL
+        // =========================
+        if (sourceToggle && sourcePanel) {
+            const closeSourcePanel = () => {
+                sourcePanel.hidden = true;
+                sourceToggle.setAttribute('aria-expanded', 'false');
+            };
+
+            sourceToggle.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const willOpen = sourcePanel.hidden;
+                sourcePanel.hidden = !willOpen;
+                sourceToggle.setAttribute('aria-expanded', String(willOpen));
+            });
+
+            sourcePanel.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
+
+            document.addEventListener('click', closeSourcePanel);
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeSourcePanel();
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>
