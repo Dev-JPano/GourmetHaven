@@ -1,16 +1,11 @@
-// =========================
-// ELEMENTS
-// =========================
-const nav = document.querySelector('.site-nav');
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-const hero = document.querySelector('.hero');
-const sourceToggle = document.querySelector('.source-toggle');
-const sourcePanel = document.querySelector('.source-panel');
 
-// =========================
-// MOBILE NAVIGATION
-// =========================
+const nav = document.querySelector('.siteNav');
+const navToggle = document.querySelector('.navToggle');
+const navLinks = document.querySelector('.navLinks');
+const hero = document.querySelector('.hero');
+const sourceToggle = document.querySelector('.sourceToggle');
+const sourcePanel = document.querySelector('.sourcePanel');
+
 if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
         const isOpen = navLinks.classList.toggle('open');
@@ -27,9 +22,6 @@ if (navToggle && navLinks) {
     });
 }
 
-// =========================
-// SHOW NAV BRAND AFTER HERO
-// =========================
 function updateNavState() {
     if (!nav || !hero) return;
 
@@ -39,9 +31,6 @@ function updateNavState() {
 window.addEventListener('scroll', updateNavState, { passive: true });
 window.addEventListener('load', updateNavState);
 
-// =========================
-// SOURCE FILE PANEL
-// =========================
 if (sourceToggle && sourcePanel) {
     const closeSourcePanel = () => {
         sourcePanel.hidden = true;

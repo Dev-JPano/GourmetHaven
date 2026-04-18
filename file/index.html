@@ -65,9 +65,6 @@
         margin: 0 auto;
     }
 
-    /* =========================
-   HERO
-========================= */
     .hero {
         padding: 36px 0 24px;
     }
@@ -97,10 +94,7 @@
         color: var(--text-soft);
     }
 
-    /* =========================
-   NAVIGATION
-========================= */
-    .site-nav {
+    .siteNav {
         position: sticky;
         top: 0;
         z-index: 1000;
@@ -111,14 +105,14 @@
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
     }
 
-    .nav-wrap {
+    .navWrap {
         position: relative;
         display: flex;
         align-items: center;
         min-height: 72px;
     }
 
-    .nav-brand {
+    .navBrand {
         position: absolute;
         left: 0;
         font-size: 1.08rem;
@@ -131,13 +125,13 @@
         transition: opacity 0.28s ease, transform 0.28s ease;
     }
 
-    .site-nav.brand-visible .nav-brand {
+    .siteNav.brand-visible .navBrand {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
     }
 
-    .nav-links {
+    .navLinks {
         list-style: none;
         display: flex;
         align-items: center;
@@ -146,12 +140,12 @@
         transition: margin 0.28s ease;
     }
 
-    .site-nav.brand-visible .nav-links {
+    .siteNav.brand-visible .navLinks {
         margin-left: auto;
         margin-right: 0;
     }
 
-    .nav-links a {
+    .navLinks a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -162,14 +156,14 @@
         transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
+    .navLinks a:hover,
+    .navLinks a:focus-visible {
         background: var(--accent);
         color: #111827;
         transform: translateY(-1px);
     }
 
-    .nav-toggle {
+    .navToggle {
         display: none;
         margin-left: auto;
         width: 48px;
@@ -181,7 +175,7 @@
         cursor: pointer;
     }
 
-    .nav-toggle span {
+    .navToggle span {
         display: block;
         height: 2px;
         margin: 5px 0;
@@ -190,21 +184,18 @@
         transition: transform 0.28s ease, opacity 0.28s ease;
     }
 
-    .nav-toggle.active span:nth-child(1) {
+    .navToggle.active span:nth-child(1) {
         transform: translateY(7px) rotate(45deg);
     }
 
-    .nav-toggle.active span:nth-child(2) {
+    .navToggle.active span:nth-child(2) {
         opacity: 0;
     }
 
-    .nav-toggle.active span:nth-child(3) {
+    .navToggle.active span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* =========================
-   PAGE CONTENT
-========================= */
     .page-content {
         padding: 30px 0 44px;
     }
@@ -213,22 +204,22 @@
         margin-bottom: 44px;
     }
 
-    .section-header {
+    .sectionHeader {
         margin-bottom: 18px;
     }
 
-    .section-header h2 {
+    .sectionHeader h2 {
         text-align: center;
         color: var(--accent-soft);
         font-size: clamp(1.7rem, 4vw, 2.1rem);
     }
 
-    .section-header--left,
-    .section-header--left h2 {
+    .sectionHeaderLeft,
+    .sectionHeaderLeft h2 {
         text-align: left;
     }
 
-    .section-intro {
+    .sectionIntro {
         margin-top: 8px;
         color: var(--text-soft);
     }
@@ -275,14 +266,14 @@
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
     }
 
-    .menu-subtitle {
+    .menuSubtitle {
         display: block;
         margin-top: 4px;
         color: var(--text-soft);
         font-size: 0.95rem;
     }
 
-    .ingredients-list {
+    .ingredientsList {
         margin: 0;
         padding-left: 20px;
         list-style: disc;
@@ -291,7 +282,7 @@
         font-size: 0.93rem;
     }
 
-    .ingredients-list li+li {
+    .ingredientsList li+li {
         margin-top: 5px;
     }
 
@@ -305,7 +296,7 @@
         display: block;
     }
 
-    .price-separator {
+    .priceSeparator {
         margin: 2px 0;
         color: var(--text-soft);
         font-size: 0.88rem;
@@ -313,7 +304,7 @@
         text-transform: lowercase;
     }
 
-    .info-panel {
+    .infoPanel {
         width: 100%;
         padding: 28px;
         background: var(--surface);
@@ -322,45 +313,42 @@
         box-shadow: var(--shadow-lg);
     }
 
-    .about-text,
+    .aboutText,
     .contact-details {
         text-align: left;
     }
 
-    .about-text h3,
+    .aboutText h3,
     .contact-details h3 {
         margin-bottom: 12px;
         color: #f8fafc;
         font-size: 1.2rem;
     }
 
-    .about-text p,
+    .aboutText p,
     .contact-details p {
         color: var(--text-soft);
     }
 
-    .about-text p+p {
+    .aboutText p+p {
         margin-top: 12px;
     }
 
-    .contact-grid {
+    .contactGrid {
         display: grid;
         grid-template-columns: repeat(2, minmax(220px, 1fr));
         gap: 12px 24px;
         margin-top: 8px;
     }
 
-    .contact-grid p {
+    .contactGrid p {
         padding: 12px 14px;
         background: var(--surface-soft);
         border: 1px solid var(--line);
         border-radius: var(--radius-sm);
     }
 
-    /* =========================
-   FOOTER
-========================= */
-    .site-footer {
+    .siteFooter {
         position: relative;
         margin-top: 12px;
         padding: 24px 0 30px;
@@ -376,7 +364,7 @@
         gap: 12px;
     }
 
-    .footer-actions {
+    .footerActions {
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -384,12 +372,12 @@
         gap: 12px;
     }
 
-    .footer-source {
+    .footerSource {
         position: relative;
     }
 
-    .source-toggle,
-    .footer-link {
+    .sourceToggle,
+    .footerLink {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -400,7 +388,7 @@
         font-weight: 700;
     }
 
-    .source-toggle {
+    .sourceToggle {
         border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.05);
         color: var(--accent);
@@ -408,35 +396,35 @@
         transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
     }
 
-    .source-toggle:hover,
-    .source-toggle:focus-visible,
-    .source-toggle[aria-expanded="true"] {
+    .sourceToggle:hover,
+    .sourceToggle:focus-visible,
+    .sourceToggle[aria-expanded="true"] {
         background: rgba(255, 255, 255, 0.09);
         border-color: rgba(245, 158, 11, 0.4);
         transform: translateY(-1px);
     }
 
-    .footer-link {
+    .footerLink {
         color: var(--accent);
         border: 1px solid transparent;
         transition: background 0.25s ease, color 0.25s ease;
     }
 
-    .footer-link:hover,
-    .footer-link:focus-visible {
+    .footerLink:hover,
+    .footerLink:focus-visible {
         color: #ffd27a;
         background: rgba(255, 255, 255, 0.04);
     }
 
-    .footer-divider {
+    .footerDivider {
         color: var(--text-muted);
     }
 
-    .source-panel[hidden] {
+    .sourcePanel[hidden] {
         display: none !important;
     }
 
-    .source-panel {
+    .sourcePanel {
         position: absolute;
         left: 50%;
         bottom: calc(100% + 12px);
@@ -453,7 +441,7 @@
         animation: panel-up 0.22s ease;
     }
 
-    .source-panel::after {
+    .sourcePanel::after {
         content: "";
         position: absolute;
         left: 50%;
@@ -466,7 +454,7 @@
         transform: translateX(-50%) rotate(45deg);
     }
 
-    .source-panel a {
+    .sourcePanel a {
         display: block;
         padding: 10px 12px;
         border-radius: 12px;
@@ -475,15 +463,12 @@
         transition: background 0.25s ease, color 0.25s ease;
     }
 
-    .source-panel a:hover,
-    .source-panel a:focus-visible {
+    .sourcePanel a:hover,
+    .sourcePanel a:focus-visible {
         background: rgba(245, 158, 11, 0.16);
         color: #fff;
     }
 
-    /* =========================
-   ANIMATIONS
-========================= */
     @keyframes float-logo {
 
         0%,
@@ -508,9 +493,6 @@
         }
     }
 
-    /* =========================
-   RESPONSIVE
-========================= */
     @media (max-width: 900px) {
 
         .menu-table th,
@@ -524,7 +506,7 @@
             height: 96px;
         }
 
-        .contact-grid {
+        .contactGrid {
             grid-template-columns: 1fr;
         }
     }
@@ -534,19 +516,19 @@
             padding-top: 26px;
         }
 
-        .nav-wrap {
+        .navWrap {
             min-height: 68px;
         }
 
-        .nav-toggle {
+        .navToggle {
             display: block;
         }
 
-        .nav-brand {
+        .navBrand {
             position: static;
         }
 
-        .nav-links {
+        .navLinks {
             position: absolute;
             top: calc(100% + 8px);
             left: 4%;
@@ -564,20 +546,20 @@
             transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
         }
 
-        .nav-links.open {
+        .navLinks.open {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        .nav-links a {
+        .navLinks a {
             width: 100%;
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.04);
         }
 
-        .site-nav:not(.brand-visible) .nav-links,
-        .site-nav.brand-visible .nav-links {
+        .siteNav:not(.brand-visible) .navLinks,
+        .siteNav.brand-visible .navLinks {
             margin: 0;
         }
 
@@ -647,11 +629,11 @@
             border-radius: 16px;
         }
 
-        .ingredients-list {
+        .ingredientsList {
             padding-left: 18px;
         }
 
-        .info-panel {
+        .infoPanel {
             padding: 20px;
         }
     }
@@ -661,21 +643,21 @@
             height: 190px;
         }
 
-        .info-panel {
+        .infoPanel {
             padding: 18px;
             border-radius: var(--radius-sm);
         }
 
-        .footer-actions {
+        .footerActions {
             gap: 8px;
             flex-wrap: wrap;
         }
 
-        .footer-divider {
+        .footerDivider {
             display: none;
         }
 
-        .source-panel {
+        .sourcePanel {
             min-width: min(220px, 82vw);
         }
     }
@@ -701,18 +683,18 @@
         </div>
     </header>
 
-    <nav class="site-nav" aria-label="Main navigation">
-        <div class="container nav-wrap">
-            <a href="#top" class="nav-brand" aria-label="Back to top">Gourmet Haven</a>
+    <nav class="siteNav" aria-label="Main navigation">
+        <div class="container navWrap">
+            <a href="#top" class="navBrand" aria-label="Back to top">Gourmet Haven</a>
 
-            <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"
-                aria-controls="site-menu">
+            <button class="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="siteMenu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <ul class="nav-links" id="site-menu">
+            <ul class="navLinks" id="siteMenu">
                 <li><a href="#appetizers">Appetizers</a></li>
                 <li><a href="#main-courses">Main Courses</a></li>
                 <li><a href="#desserts">Desserts</a></li>
@@ -725,9 +707,10 @@
 
     <main class="container page-content">
         <section id="appetizers" aria-labelledby="appetizers-title">
-            <header class="section-header">
+            <header class="sectionHeader">
                 <h2 id="appetizers-title">Appetizers</h2>
             </header>
+
             <div class="table-wrap">
                 <table class="menu-table">
                     <thead>
@@ -739,16 +722,17 @@
                             <th>Price</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr>
                             <td data-label="Image"><img src="image 1.png" alt="Tokwat baby"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Dish Name"><strong>Tokwat baby</strong><span class="menu-subtitle">Filipino
+                            <td data-label="Dish Name"><strong>Tokwat baby</strong><span class="menuSubtitle">Filipino
                                     Street Food</span></td>
                             <td data-label="Description">Crispy bread topped with garlic butter and herbs</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Fried pork ears &amp; tofu</li>
                                     <li>Soy sauce &amp; vinegar dip</li>
                                     <li>Garlic, chili, black pepper</li>
@@ -756,18 +740,18 @@
                                 </ul>
                             </td>
                             <td data-label="Price" class="price"><span>P650.00</span><span
-                                    class="price-separator">to</span><span>P2,598.00</span></td>
+                                    class="priceSeparator">to</span><span>P2,598.00</span></td>
                         </tr>
                         <tr>
                             <td data-label="Image"><img src="image 2.png" alt="Caesar Salad"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Dish Name"><strong>Caesar Salad</strong><span class="menu-subtitle">Classic
+                            <td data-label="Dish Name"><strong>Caesar Salad</strong><span class="menuSubtitle">Classic
                                     Version</span></td>
                             <td data-label="Description">Romaine lettuce, croutons, parmesan cheese with creamy Caesar
                                 dressing</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Romaine lettuce</li>
                                     <li>Caesar dressing</li>
                                     <li>Parmesan cheese</li>
@@ -781,10 +765,10 @@
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548340748-6d2b7d7da280?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
                             <td data-label="Dish Name"><strong>Mozzarella Sticks</strong><span
-                                    class="menu-subtitle">Crispy &amp; Cheesy</span></td>
+                                    class="menuSubtitle">Crispy &amp; Cheesy</span></td>
                             <td data-label="Description">Fried cheese served with marinara sauce</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Fresh mozzarella cheese</li>
                                     <li>Panko breadcrumbs</li>
                                     <li>Marinara sauce</li>
@@ -801,7 +785,7 @@
         </section>
 
         <section id="main-courses" aria-labelledby="main-courses-title">
-            <header class="section-header">
+            <header class="sectionHeader">
                 <h2 id="main-courses-title">Main Courses</h2>
             </header>
             <div class="table-wrap">
@@ -821,11 +805,11 @@
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
                             <td data-label="Dish Name"><strong>Grilled Ribeye Steak</strong><span
-                                    class="menu-subtitle">12oz Premium Cut</span></td>
+                                    class="menuSubtitle">12oz Premium Cut</span></td>
                             <td data-label="Description">250g premium ribeye with roasted potatoes and seasonal
                                 vegetables</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>12oz ribeye steak</li>
                                     <li>Garlic herb butter</li>
                                     <li>Truffle mashed potatoes</li>
@@ -834,18 +818,18 @@
                                 </ul>
                             </td>
                             <td data-label="Price" class="price"><span>P300.00</span><span
-                                    class="price-separator">to</span><span>P800.00</span></td>
+                                    class="priceSeparator">to</span><span>P800.00</span></td>
                         </tr>
                         <tr>
                             <td data-label="Image"><img src="image 5.png" alt="Grilled Chicken Steak"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
                             <td data-label="Dish Name"><strong>Grilled Chicken Steak</strong><span
-                                    class="menu-subtitle">Juicy Breast Fillet</span></td>
+                                    class="menuSubtitle">Juicy Breast Fillet</span></td>
                             <td data-label="Description">Flattened, marinated, and grilled chicken breast or thigh,
                                 offering a healthy, high-protein, and succulent alternative to beef steak</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Chicken breast fillet</li>
                                     <li>Lemon herb marinade</li>
                                     <li>Roasted garlic potatoes</li>
@@ -854,18 +838,18 @@
                                 </ul>
                             </td>
                             <td data-label="Price" class="price"><span>P85.00</span><span
-                                    class="price-separator">to</span><span>P400.00</span></td>
+                                    class="priceSeparator">to</span><span>P400.00</span></td>
                         </tr>
                         <tr>
                             <td data-label="Image"><img src="image 6.png" alt="Grilled Salmon"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Dish Name"><strong>Grilled Salmon</strong><span class="menu-subtitle">Lemon
+                            <td data-label="Dish Name"><strong>Grilled Salmon</strong><span class="menuSubtitle">Lemon
                                     Butter Glaze</span></td>
                             <td data-label="Description">Fresh Atlantic salmon grilled to perfection, served with rice
                                 and vegetables</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Salmon fillet</li>
                                     <li>Lemon butter sauce</li>
                                     <li>Steamed rice</li>
@@ -874,7 +858,7 @@
                                 </ul>
                             </td>
                             <td data-label="Price" class="price"><span>P250.00</span><span
-                                    class="price-separator">to</span><span>P600.00</span></td>
+                                    class="priceSeparator">to</span><span>P600.00</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -882,7 +866,7 @@
         </section>
 
         <section id="desserts" aria-labelledby="desserts-title">
-            <header class="section-header">
+            <header class="sectionHeader">
                 <h2 id="desserts-title">Desserts</h2>
             </header>
             <div class="table-wrap">
@@ -902,11 +886,11 @@
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
                             <td data-label="Dessert Name"><strong>Chocolate Lava Cake</strong><span
-                                    class="menu-subtitle">Molten Center</span></td>
+                                    class="menuSubtitle">Molten Center</span></td>
                             <td data-label="Description">Warm chocolate cake with a molten center, served with ice cream
                             </td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Dark chocolate center</li>
                                     <li>Vanilla ice cream</li>
                                     <li>Fresh raspberries</li>
@@ -920,12 +904,12 @@
                             <td data-label="Image"><img src="image 8.avif" alt="Tiramisu"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Dessert Name"><strong>Tiramisu</strong><span class="menu-subtitle">Classic
+                            <td data-label="Dessert Name"><strong>Tiramisu</strong><span class="menuSubtitle">Classic
                                     Italian</span></td>
                             <td data-label="Description">Classic Italian dessert with coffee-soaked ladyfingers and
                                 mascarpone</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Ladyfinger biscuits</li>
                                     <li>Mascarpone cream</li>
                                     <li>Espresso coffee</li>
@@ -934,17 +918,17 @@
                                 </ul>
                             </td>
                             <td data-label="Price" class="price"><span>P250.00</span><span
-                                    class="price-separator">to</span><span>P900.00</span></td>
+                                    class="priceSeparator">to</span><span>P900.00</span></td>
                         </tr>
                         <tr>
                             <td data-label="Image"><img src="image 9.png" alt="Cheesecake"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Dessert Name"><strong>Cheesecake</strong><span class="menu-subtitle">Creamy
+                            <td data-label="Dessert Name"><strong>Cheesecake</strong><span class="menuSubtitle">Creamy
                                     Classic</span></td>
                             <td data-label="Description">Rich and creamy cheesecake with a buttery graham crust</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Cream cheese</li>
                                     <li>Graham cracker crust</li>
                                     <li>Sugar</li>
@@ -960,7 +944,7 @@
         </section>
 
         <section id="drinks" aria-labelledby="drinks-title">
-            <header class="section-header">
+            <header class="sectionHeader">
                 <h2 id="drinks-title">Drinks</h2>
             </header>
             <div class="table-wrap">
@@ -979,11 +963,11 @@
                             <td data-label="Image"><img src="image 12.avif" alt="Iced Tea"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Drink Name"><strong>Iced Tea</strong><span class="menu-subtitle">Refreshing
+                            <td data-label="Drink Name"><strong>Iced Tea</strong><span class="menuSubtitle">Refreshing
                                     classic</span></td>
                             <td data-label="Description">Refreshing iced tea with lemon</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Premium black tea</li>
                                     <li>Fresh lemon slices</li>
                                     <li>Simple syrup</li>
@@ -997,11 +981,11 @@
                             <td data-label="Image"><img src="image 11.png" alt="Hot Coffee"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Drink Name"><strong>Hot Coffee</strong><span class="menu-subtitle">Freshly
+                            <td data-label="Drink Name"><strong>Hot Coffee</strong><span class="menuSubtitle">Freshly
                                     Brewed</span></td>
                             <td data-label="Description">Freshly brewed hot coffee</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>100% Arabic beans</li>
                                     <li>Freshly ground</li>
                                     <li>Hot water (93Celsius)</li>
@@ -1009,17 +993,17 @@
                                 </ul>
                             </td>
                             <td data-label="Price" class="price"><span>P50.00</span><span
-                                    class="price-separator">to</span><span>P200.00</span></td>
+                                    class="priceSeparator">to</span><span>P200.00</span></td>
                         </tr>
                         <tr>
                             <td data-label="Image"><img src="image 10.png" alt="Lemonade"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&amp;fit=crop&amp;w=700&amp;q=80';">
                             </td>
-                            <td data-label="Drink Name"><strong>Lemonade</strong><span class="menu-subtitle">Citrus
+                            <td data-label="Drink Name"><strong>Lemonade</strong><span class="menuSubtitle">Citrus
                                     Refreshment</span></td>
                             <td data-label="Description">Freshly squeezed lemons with chilled water and sugar</td>
                             <td data-label="Ingredients">
-                                <ul class="ingredients-list">
+                                <ul class="ingredientsList">
                                     <li>Fresh lemon juice</li>
                                     <li>Water</li>
                                     <li>Sugar</li>
@@ -1033,11 +1017,11 @@
             </div>
         </section>
 
-        <section id="about" aria-labelledby="about-title">
-            <header class="section-header section-header--left">
-                <h2 id="about-title">About</h2>
+        <section id="about" aria-labelledby="aboutTitle">
+            <header class="sectionHeader sectionHeaderLeft">
+                <h2 id="aboutTitle">About</h2>
             </header>
-            <div class="info-panel about-text">
+            <div class="infoPanel aboutText">
                 <h3>About Gourmet Haven</h3>
                 <p>&copy;Gourmet Haven is a celebration of global flavors crafted with seasonal ingredients. Our chefs
                     focus on refined techniques, balanced plates, and warm hospitality. We source locally when possible
@@ -1047,15 +1031,15 @@
             </div>
         </section>
 
-        <section id="contact" aria-labelledby="contact-title">
-            <header class="section-header section-header--left">
-                <h2 id="contact-title">Contact &amp; Reservations</h2>
-                <p class="section-intro">Have a question or want to reserve a table? Send us a message below or use the
+        <section id="contact" aria-labelledby="contactTitle">
+            <header class="sectionHeader sectionHeaderLeft">
+                <h2 id="contactTitle">Contact &amp; Reservations</h2>
+                <p class="sectionIntro">Have a question or want to reserve a table? Send us a message below or use the
                     contact details.</p>
             </header>
-            <div class="info-panel contact-details">
+            <div class="infoPanel contact-details">
                 <h3>Visit or Call</h3>
-                <div class="contact-grid">
+                <div class="contactGrid">
                     <p><strong>Address:</strong> 123 Culinary Lane, Flavor Town</p>
                     <p><strong>Phone:</strong> (555) 123-4567</p>
                     <p><strong>Email:</strong> hello@gourmethaven.example</p>
@@ -1065,42 +1049,36 @@
         </section>
     </main>
 
-    <footer class="site-footer" aria-label="Site footer">
+    <footer class="siteFooter" aria-label="Site footer">
         <div class="container footer-content">
             <p>© 2026 Gourmet Haven. All rights reserved.</p>
 
-            <div class="footer-actions">
-                <div class="footer-source">
-                    <button class="source-toggle" type="button" aria-expanded="false"
-                        aria-controls="source-panel">Source File</button>
-                    <div class="source-panel" id="source-panel" hidden>
-                        <a href="index_fixed.html" download="index.html">index.html</a>
-                        <a href="style_fixed.css" download="style.css">style.css</a>
-                        <a href="script_fixed.js" download="script.js">script.js</a>
+            <div class="footerActions">
+                <div class="footerSource">
+                    <button class="sourceToggle" type="button" aria-expanded="false" aria-controls="sourcePanel">Source
+                        File</button>
+                    <div class="sourcePanel" id="sourcePanel" hidden>
+                        <a href="index.html" download="index.html">index.html</a>
+                        <a href="style.css" download="style.css">style.css</a>
+                        <a href="script.js" download="script.js">script.js</a>
                     </div>
                 </div>
 
-                <span class="footer-divider" aria-hidden="true">|</span>
+                <span class="footerDivider" aria-hidden="true">|</span>
 
-                <a class="footer-link" href="index_fixed.html" download="index.html">HTML only</a>
+                <a class="footerLink" href="/file/index.html" download="index.html">HTML only</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // =========================
-        // ELEMENTS
-        // =========================
-        const nav = document.querySelector('.site-nav');
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const nav = document.querySelector('.siteNav');
+        const navToggle = document.querySelector('.navToggle');
+        const navLinks = document.querySelector('.navLinks');
         const hero = document.querySelector('.hero');
-        const sourceToggle = document.querySelector('.source-toggle');
-        const sourcePanel = document.querySelector('.source-panel');
+        const sourceToggle = document.querySelector('.sourceToggle');
+        const sourcePanel = document.querySelector('.sourcePanel');
 
-        // =========================
-        // MOBILE NAVIGATION
-        // =========================
         if (navToggle && navLinks) {
             navToggle.addEventListener('click', () => {
                 const isOpen = navLinks.classList.toggle('open');
@@ -1117,9 +1095,6 @@
             });
         }
 
-        // =========================
-        // SHOW NAV BRAND AFTER HERO
-        // =========================
         function updateNavState() {
             if (!nav || !hero) return;
 
@@ -1129,9 +1104,6 @@
         window.addEventListener('scroll', updateNavState, { passive: true });
         window.addEventListener('load', updateNavState);
 
-        // =========================
-        // SOURCE FILE PANEL
-        // =========================
         if (sourceToggle && sourcePanel) {
             const closeSourcePanel = () => {
                 sourcePanel.hidden = true;
@@ -1157,8 +1129,8 @@
                 }
             });
         }
-
     </script>
+
 </body>
 
 </html>

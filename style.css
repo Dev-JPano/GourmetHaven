@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -55,9 +54,6 @@ img {
     margin: 0 auto;
 }
 
-/* =========================
-   HERO
-========================= */
 .hero {
     padding: 36px 0 24px;
 }
@@ -87,10 +83,7 @@ img {
     color: var(--text-soft);
 }
 
-/* =========================
-   NAVIGATION
-========================= */
-.site-nav {
+.siteNav {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -101,14 +94,14 @@ img {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
 }
 
-.nav-wrap {
+.navWrap {
     position: relative;
     display: flex;
     align-items: center;
     min-height: 72px;
 }
 
-.nav-brand {
+.navBrand {
     position: absolute;
     left: 0;
     font-size: 1.08rem;
@@ -121,13 +114,13 @@ img {
     transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
-.site-nav.brand-visible .nav-brand {
+.siteNav.brand-visible .navBrand {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-.nav-links {
+.navLinks {
     list-style: none;
     display: flex;
     align-items: center;
@@ -136,12 +129,12 @@ img {
     transition: margin 0.28s ease;
 }
 
-.site-nav.brand-visible .nav-links {
+.siteNav.brand-visible .navLinks {
     margin-left: auto;
     margin-right: 0;
 }
 
-.nav-links a {
+.navLinks a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -152,14 +145,14 @@ img {
     transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
-.nav-links a:hover,
-.nav-links a:focus-visible {
+.navLinks a:hover,
+.navLinks a:focus-visible {
     background: var(--accent);
     color: #111827;
     transform: translateY(-1px);
 }
 
-.nav-toggle {
+.navToggle {
     display: none;
     margin-left: auto;
     width: 48px;
@@ -171,7 +164,7 @@ img {
     cursor: pointer;
 }
 
-.nav-toggle span {
+.navToggle span {
     display: block;
     height: 2px;
     margin: 5px 0;
@@ -180,21 +173,18 @@ img {
     transition: transform 0.28s ease, opacity 0.28s ease;
 }
 
-.nav-toggle.active span:nth-child(1) {
+.navToggle.active span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
 
-.nav-toggle.active span:nth-child(2) {
+.navToggle.active span:nth-child(2) {
     opacity: 0;
 }
 
-.nav-toggle.active span:nth-child(3) {
+.navToggle.active span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* =========================
-   PAGE CONTENT
-========================= */
 .page-content {
     padding: 30px 0 44px;
 }
@@ -203,22 +193,22 @@ section {
     margin-bottom: 44px;
 }
 
-.section-header {
+.sectionHeader {
     margin-bottom: 18px;
 }
 
-.section-header h2 {
+.sectionHeader h2 {
     text-align: center;
     color: var(--accent-soft);
     font-size: clamp(1.7rem, 4vw, 2.1rem);
 }
 
-.section-header--left,
-.section-header--left h2 {
+.sectionHeaderLeft,
+.sectionHeaderLeft h2 {
     text-align: left;
 }
 
-.section-intro {
+.sectionIntro {
     margin-top: 8px;
     color: var(--text-soft);
 }
@@ -265,14 +255,14 @@ section {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
-.menu-subtitle {
+.menuSubtitle {
     display: block;
     margin-top: 4px;
     color: var(--text-soft);
     font-size: 0.95rem;
 }
 
-.ingredients-list {
+.ingredientsList {
     margin: 0;
     padding-left: 20px;
     list-style: disc;
@@ -281,7 +271,7 @@ section {
     font-size: 0.93rem;
 }
 
-.ingredients-list li + li {
+.ingredientsList li+li {
     margin-top: 5px;
 }
 
@@ -295,7 +285,7 @@ section {
     display: block;
 }
 
-.price-separator {
+.priceSeparator {
     margin: 2px 0;
     color: var(--text-soft);
     font-size: 0.88rem;
@@ -303,7 +293,7 @@ section {
     text-transform: lowercase;
 }
 
-.info-panel {
+.infoPanel {
     width: 100%;
     padding: 28px;
     background: var(--surface);
@@ -312,45 +302,42 @@ section {
     box-shadow: var(--shadow-lg);
 }
 
-.about-text,
+.aboutText,
 .contact-details {
     text-align: left;
 }
 
-.about-text h3,
+.aboutText h3,
 .contact-details h3 {
     margin-bottom: 12px;
     color: #f8fafc;
     font-size: 1.2rem;
 }
 
-.about-text p,
+.aboutText p,
 .contact-details p {
     color: var(--text-soft);
 }
 
-.about-text p + p {
+.aboutText p+p {
     margin-top: 12px;
 }
 
-.contact-grid {
+.contactGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(220px, 1fr));
     gap: 12px 24px;
     margin-top: 8px;
 }
 
-.contact-grid p {
+.contactGrid p {
     padding: 12px 14px;
     background: var(--surface-soft);
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
 }
 
-/* =========================
-   FOOTER
-========================= */
-.site-footer {
+.siteFooter {
     position: relative;
     margin-top: 12px;
     padding: 24px 0 30px;
@@ -366,7 +353,7 @@ section {
     gap: 12px;
 }
 
-.footer-actions {
+.footerActions {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -374,12 +361,12 @@ section {
     gap: 12px;
 }
 
-.footer-source {
+.footerSource {
     position: relative;
 }
 
-.source-toggle,
-.footer-link {
+.sourceToggle,
+.footerLink {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -390,7 +377,7 @@ section {
     font-weight: 700;
 }
 
-.source-toggle {
+.sourceToggle {
     border: 1px solid var(--line);
     background: rgba(255, 255, 255, 0.05);
     color: var(--accent);
@@ -398,35 +385,35 @@ section {
     transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 
-.source-toggle:hover,
-.source-toggle:focus-visible,
-.source-toggle[aria-expanded="true"] {
+.sourceToggle:hover,
+.sourceToggle:focus-visible,
+.sourceToggle[aria-expanded="true"] {
     background: rgba(255, 255, 255, 0.09);
     border-color: rgba(245, 158, 11, 0.4);
     transform: translateY(-1px);
 }
 
-.footer-link {
+.footerLink {
     color: var(--accent);
     border: 1px solid transparent;
     transition: background 0.25s ease, color 0.25s ease;
 }
 
-.footer-link:hover,
-.footer-link:focus-visible {
+.footerLink:hover,
+.footerLink:focus-visible {
     color: #ffd27a;
     background: rgba(255, 255, 255, 0.04);
 }
 
-.footer-divider {
+.footerDivider {
     color: var(--text-muted);
 }
 
-.source-panel[hidden] {
+.sourcePanel[hidden] {
     display: none !important;
 }
 
-.source-panel {
+.sourcePanel {
     position: absolute;
     left: 50%;
     bottom: calc(100% + 12px);
@@ -443,7 +430,7 @@ section {
     animation: panel-up 0.22s ease;
 }
 
-.source-panel::after {
+.sourcePanel::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -456,7 +443,7 @@ section {
     transform: translateX(-50%) rotate(45deg);
 }
 
-.source-panel a {
+.sourcePanel a {
     display: block;
     padding: 10px 12px;
     border-radius: 12px;
@@ -465,16 +452,14 @@ section {
     transition: background 0.25s ease, color 0.25s ease;
 }
 
-.source-panel a:hover,
-.source-panel a:focus-visible {
+.sourcePanel a:hover,
+.sourcePanel a:focus-visible {
     background: rgba(245, 158, 11, 0.16);
     color: #fff;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
 @keyframes float-logo {
+
     0%,
     100% {
         transform: translateY(0);
@@ -497,10 +482,8 @@ section {
     }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 900px) {
+
     .menu-table th,
     .menu-table td {
         padding: 12px;
@@ -512,7 +495,7 @@ section {
         height: 96px;
     }
 
-    .contact-grid {
+    .contactGrid {
         grid-template-columns: 1fr;
     }
 }
@@ -522,19 +505,19 @@ section {
         padding-top: 26px;
     }
 
-    .nav-wrap {
+    .navWrap {
         min-height: 68px;
     }
 
-    .nav-toggle {
+    .navToggle {
         display: block;
     }
 
-    .nav-brand {
+    .navBrand {
         position: static;
     }
 
-    .nav-links {
+    .navLinks {
         position: absolute;
         top: calc(100% + 8px);
         left: 4%;
@@ -552,20 +535,20 @@ section {
         transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
     }
 
-    .nav-links.open {
+    .navLinks.open {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
 
-    .nav-links a {
+    .navLinks a {
         width: 100%;
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.04);
     }
 
-    .site-nav:not(.brand-visible) .nav-links,
-    .site-nav.brand-visible .nav-links {
+    .siteNav:not(.brand-visible) .navLinks,
+    .siteNav.brand-visible .navLinks {
         margin: 0;
     }
 
@@ -635,11 +618,11 @@ section {
         border-radius: 16px;
     }
 
-    .ingredients-list {
+    .ingredientsList {
         padding-left: 18px;
     }
 
-    .info-panel {
+    .infoPanel {
         padding: 20px;
     }
 }
@@ -649,21 +632,21 @@ section {
         height: 190px;
     }
 
-    .info-panel {
+    .infoPanel {
         padding: 18px;
         border-radius: var(--radius-sm);
     }
 
-    .footer-actions {
+    .footerActions {
         gap: 8px;
         flex-wrap: wrap;
     }
 
-    .footer-divider {
+    .footerDivider {
         display: none;
     }
 
-    .source-panel {
+    .sourcePanel {
         min-width: min(220px, 82vw);
     }
 }
